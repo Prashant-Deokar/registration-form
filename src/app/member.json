@@ -1,0 +1,48 @@
+{
+  "member": [
+    {
+      "fullName": "prashantt",
+      "email": "vaibhav@gmail.com",
+      "gender": "male",
+      "mobile": 7038396335,
+      "dob": "2022-12-26T18:30:00.000Z",
+      "addressLine1": "mumbai",
+      "addressLine2": "mumbai",
+      "city": "Gandhinagar",
+      "state": "Arunachal Pradesh",
+      "country": "India",
+      "pinCode": 23432,
+      "skills": [
+        {
+          "id": 1,
+          "name": "Angular"
+        },
+        {
+          "id": 3,
+          "name": "JAVA"
+        },
+        {
+          "id": 4,
+          "name": "CSS"
+        },
+        {
+          "id": 2,
+          "name": ".NET"
+        }
+      ],
+      "search": "",
+      "checkBox": false,
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

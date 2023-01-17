@@ -1,0 +1,401 @@
+<p-toast position="top-center"></p-toast>
+
+<section class="container" style="background-color: rgb(233, 232, 232); height: 1100px; width: 800px;box-shadow: 3px 4px 10 3px;position: absolute;left: 20px;">
+
+    <div class="container h-100">
+
+<form [formGroup]="userform" (ngSubmit)="onSubmit()" style="position: relative; top:50px" >
+<label style="position: relative;background-color: rgb(212, 209, 204); width: 100%; padding: 10px; font-size: 22px;" class="text-center"><b>Personal Information </b></label>
+
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInRight">
+      <div class="col-sm animate-box">
+        <label for="fullName" >Full Name <span class="text-danger"> *</span></label>
+        <input type="text"  class="form-control" [(ngModel)]="fullName" [readonly]="isreadOnly" formControlName="fullName" placeholder="Enter first name">
+        <small  class="text-danger" 
+        *ngIf="registerFormControl['fullName'].errors?.['required'] && registerFormControl['fullName'].touched">
+        <i class="fa fa-close"></i>
+         full Name is required
+        
+       </small>
+       <small class="text-danger" *ngIf="registerFormControl['fullName'].hasError('pattern')">
+        full Name is invalid
+       </small>
+      </div>
+
+
+      <div class="col-sm">
+        <label for="email">Email  <span class="text-danger"> *</span></label>
+        <input type="email"  class="form-control" [(ngModel)]="email" [readonly]="isreadOnly" formControlName="email" placeholder="Enter Email">
+        <small  class="text-danger" 
+        *ngIf="registerFormControl['email'].errors?.['required'] && registerFormControl['email'].touched">
+        <i class="fa fa-close"></i>
+         Email is required
+        
+       </small>
+       <small class="text-danger" *ngIf="registerFormControl['email'].invalid && registerFormControl['email'].dirty">
+        Email is invalid
+       </small>
+      </div>
+
+
+      <div class="col-sm">
+        <label for="number"> Mobile Number  <span class="text-danger"> *</span></label>
+        <input type="tel"  class="form-control" [(ngModel)]="mobile" maxlength="10" minlength="10" [readonly]="isreadOnly" formControlName="mobile" placeholder="Enter mobile number">
+        <small  class="text-danger" 
+        *ngIf="registerFormControl['mobile'].errors?.['required'] && registerFormControl['mobile'].touched">
+        <i class="fa fa-close"></i>
+         mobile number is required
+        
+       </small>
+       <small class="text-danger" *ngIf="registerFormControl['mobile'].hasError('pattern')">
+      mobile number is invalid
+       </small>
+      </div>
+</div>
+      <div class="row">
+        <label for="number">Gender  <span class="text-danger"> *</span></label>
+        <div class="custom-control custom-radio">
+            <input id="male" type="radio" [(ngModel)]="gender" [readonly]="isreadOnly" [attr.disabled]="isreadOnly ? true:null" class="custom-control-input" value="male" name="gender" formControlName="gender">
+       <span class="custom-control-label" for="male">Male</span>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="female" type="radio" class="custom-control-input" [readonly]="isreadOnly" [attr.disabled]="isreadOnly ? true:null" value="female" name="gender" formControlName="gender">
+            <span class="custom-control-label" for="female">Female</span>
+          </div>
+        <small  class="text-danger" 
+        *ngIf="!userform.controls['gender'].valid && userform.controls['gender'].touched">
+        <i class="fa fa-close"></i>
+      Gender is required
+       </small>
+      </div>
+
+
+      <div >
+        <div class="row" style="position: relative;top: 20px;">
+        <!-- <label style="position: relative;left:250px"><h3>Address</h3></label> -->
+        <div class="col-sm">
+            <label for="address">Address line1  <span class="text-danger"> *</span></label>
+            <input type="text" class="form-control" [(ngModel)]="addressLine1" [readonly]="isreadOnly" formControlName="addressLine1" placeholder="Enter Address">
+            <small  class="text-danger"
+            *ngIf="!userform.controls['addressLine1'].valid && userform.controls['addressLine1'].touched">
+            <i class="fa fa-close"></i>
+               Address is required
+           </small>
+          </div>
+
+          <div class="col-sm">
+            <label for="address">Address line 2</label>
+            <input type="text" class="form-control" [(ngModel)]="addressLine2" [readonly]="isreadOnly" formControlName="addressLine2" placeholder="Enter Address">
+          </div>
+
+        </div>
+        <div class="row" style="margin-top: 30px;">
+
+          <div class="col-sm">
+          
+                <p-dropdown class="ui-grid-col-6"placeholder="select a City *" [disabled]="isreadOnly" [options]="cities" optionLabel="name" [(ngModel)]="city" [readonly]="isreadOnly" formControlName="city" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="text-danger" 
+            *ngIf="!userform.controls['city'].valid && userform.controls['city'].touched">
+            <i class="fa fa-close"></i>
+             City is required
+           </small>
+          </div>
+
+          <div class="col-sm" >
+      
+                <p-dropdown  class="ui-grid-col-6" placeholder="select a State *" [disabled]="isreadOnly" [options]="State" optionLabel="name" [(ngModel)]="state" [readonly]="isreadOnly" formControlName="state" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="text-danger" 
+            *ngIf="!userform.controls['state'].valid && userform.controls['state'].touched">
+            <i class="fa fa-close"></i>
+             State is required
+           </small>
+          </div>
+
+          <div class="col-sm" >
+       
+                <p-dropdown class="ui-grid-col-6" placeholder="select a Country *" [disabled]="isreadOnly" [options]="Country" optionLabel="name" [(ngModel)]="country" [readonly]="isreadOnly" formControlName="country" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small class="text-danger"
+            *ngIf="!userform.controls['country'].valid && userform.controls['country'].touched">
+            <i class="fa fa-close"></i>
+            Country is required
+           </small>
+          </div>
+
+          <div class="col-sm" >
+         
+           <p-calendar    [showIcon]="true" [(ngModel)]="dob" formControlName="dob" [disabled]="isreadOnly" dateFormat="MM d, yy" placeholder="select date of birth *" inputId="icon" ></p-calendar>
+            <small class="text-danger"  
+            *ngIf="!userform.controls['dob'].valid && userform.controls['dob'].touched">
+            <i class="fa fa-close"></i>
+            Date of birth is required
+           </small>
+          </div>
+          </div>
+
+          <div class="row" style="position: relative; top:0px">
+            <label for="address">Pin Code <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" [readonly]="isreadOnly" [(ngModel)]="pinCode" formControlName="pinCode" placeholder="Enter Pin Code">
+            <small  class="text-danger"
+            *ngIf="!userform.controls['pinCode'].valid && userform.controls['pinCode'].touched">
+            <i class="fa fa-close"></i>
+            pin Code is required
+           </small>
+          </div>
+
+          <div  class="row" style="position: relative; top:0px">
+          <label for="address"  >select at least two skills <span class="text-danger">*</span></label><br>
+          <small  class="text-danger" 
+          *ngIf="!userform.controls['skills'].valid && userform.controls['skills'].touched">
+          <i class="fa fa-close"></i>
+          skills is required
+         </small>
+          <div *ngFor="let category of Skills" class="p-field-checkbox" >
+
+            <p-checkbox name="group2" value="category" [readonly]="isreadOnly" [value]="category" [(ngModel)]="skills" formControlName="skills" ></p-checkbox>
+            <span >{{category.name}}</span>
+           
+          </div>
+        </div>
+
+<br>
+<div >
+  <label style="position: relative;background-color: rgb(212, 209, 204); width: 100%; padding: 5px;font-size: 22px;" class="text-center"> <b>
+    Current Address  (same as permanent address) </b> 
+    <input type="checkbox" [attr.disabled]="isreadOnly ? true:null" formControlName="checkBox" [(ngModel)]="isChecked" style="width: 30px; height: 25px; position: relative; top: 5px;"   (change)="checkBox($event)"></label>
+  <div class="form-group">
+      <label for="address">Address line 1 <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" [readonly]="isreadOnly" [(ngModel)]="paddressLine1" formControlName="paddressLine1" placeholder="Enter Address">
+      <small  class="text-danger"
+      *ngIf="!userform.controls['addressLine1'].valid && userform.controls['addressLine1'].touched">
+      <i class="fa fa-close"></i>
+         Address is required
+     </small>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address line 2</label>
+      <input type="text" class="form-control" [readonly]="isreadOnly" [(ngModel)]="paddressLine2" formControlName="paddressLine2" placeholder="Enter Address">
+    </div>
+
+<div class="container" style="margin-top: 10px;">
+  
+  <div class="row justify-content-md-center">
+
+  <div class="col-sm" >
+    
+    <p-dropdown placeholder="select a City *" [readonly]="isreadOnly" [disabled]="isreadOnly" [options]="cities" optionLabel="name" [(ngModel)]="pcity" formControlName="pcity" optionValue="name" [showClear]="true"></p-dropdown><br>
+<small  class="text-danger"
+*ngIf="!userform.controls['city'].valid && userform.controls['city'].touched">
+<i class="fa fa-close"></i>
+ City is required
+</small>
+</div>
+
+<div class="col-sm" >
+  <!-- <span class="text-danger" style="position: absolute;left: 260px;">*</span> -->
+    <p-dropdown placeholder="select a State *" [readonly]="isreadOnly" [disabled]="isreadOnly" [options]="State" optionLabel="name" [(ngModel)]="pstate" formControlName="pstate" optionValue="name" [showClear]="true"></p-dropdown><br>
+<small  class="text-danger"
+*ngIf="!userform.controls['state'].valid && userform.controls['state'].touched">
+<i class="fa fa-close"></i>
+ State is required
+</small>
+</div>
+
+<div class="col-sm" >
+
+    <p-dropdown placeholder="select a Country *" [readonly]="isreadOnly" [disabled]="isreadOnly" [options]="Country" optionLabel="name" [(ngModel)]="pcountry" formControlName="pcountry" optionValue="name" [showClear]="true"></p-dropdown><br>
+<small  class="text-danger"
+*ngIf="!userform.controls['country'].valid && userform.controls['country'].touched">
+<i class="fa fa-close"></i>
+Country is required
+</small>
+</div>
+</div>
+</div>
+
+    <div class="form-group" style="position: relative; top:0px;margin: 20px;">
+      <label for="address">Pin Code <span class="text-danger">*</span></label>
+      <input type="number" class="form-control" [(ngModel)]="ppinCode" [readonly]="isreadOnly" formControlName="ppinCode" placeholder="Enter Pin Code">
+      <small  class="text-danger"
+      *ngIf="!userform.controls['pinCode'].valid && userform.controls['pinCode'].touched">
+      <i class="fa fa-close"></i>
+      pin Code is required
+     </small>
+    </div>
+    
+
+</div>
+      
+
+          <!-- <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> -->
+
+      </div>
+      <div >
+        <!-- <label>    
+           <h3>same as permanent address
+            
+            <p-checkbox  (click)="event($event)">
+
+           </p-checkbox></h3></label>
+        <div class="form-group">
+            <label for="address">Address line 1 *</label>
+            <input type="text" class="form-control" formControlName="addressLine1" placeholder="Enter Address">
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['addressLine1'].valid && userform.controls['addressLine1'].touched">
+            <i class="fa fa-close"></i>
+               Address is required
+           </small>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address line 2</label>
+            <input type="text" class="form-control" formControlName="addressLine2" placeholder="Enter Address">
+          </div>
+
+
+          <div class="form-group" style="position: relative;left:30px;top: 40px;">
+            <label for="city">Select City* : </label>
+                <p-dropdown class="ui-grid-col-6" [options]="cities" optionLabel="name" formControlName="city" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['city'].valid && userform.controls['city'].touched">
+            <i class="fa fa-close"></i>
+             City is required
+           </small>
+          </div>
+                
+          <div class="form-group" style="position: relative; left: 400px;top:10px">
+            <label for="city">Select State* : </label>
+                <p-dropdown class="ui-grid-col-6" [options]="State" optionLabel="name" formControlName="state" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['state'].valid && userform.controls['state'].touched">
+            <i class="fa fa-close"></i>
+             State is required
+           </small>
+          </div>
+
+          <div class="form-group" style="position: relative;top:70px; left:30px">
+            <label for="city">Select Country* : </label>
+                <p-dropdown class="ui-grid-col-6" [options]="Country" optionLabel="name" formControlName="country" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['country'].valid && userform.controls['country'].touched">
+            <i class="fa fa-close"></i>
+            Country is required
+           </small>
+          </div>
+
+          <div class="form-group" style="position: relative; top:200px">
+            <label for="address">Pin Code*</label>
+            <input type="number" class="form-control" formControlName="pinCode" placeholder="Enter Pin Code">
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['pinCode'].valid && userform.controls['pinCode'].touched">
+            <i class="fa fa-close"></i>
+            pin Code is required
+           </small>
+          </div>
+
+          <div  class="form-group" style="position: relative; top:250px">
+          <label for="address"  >select at least two skills*</label><br>
+          <div *ngFor="let category of Skills" class="p-field-checkbox" >
+          
+            <p-checkbox name="group2" value="category" [value]="category" formControlName="skills" ></p-checkbox>
+            <label [for]="category.key">{{category.name}}</label>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['skills'].valid && userform.controls['skills'].touched">
+            <i class="fa fa-close"></i>
+            skills is required
+           </small>
+          </div>
+        </div> -->
+
+
+        <div  class="row justify-content-center">
+          <button type="submit" pButton pRipple class="p-button-info" *ngIf="submited" label="Submit" style="width: 200px; margin-right: 10px;"></button>
+          <button type="submit" pButton pRipple class="p-button-warning" (click)="onUpdateMember()" *ngIf="updated" label="update" style="width: 200px;margin-right: 10px;"></button>
+          <button type="reset" class="p-button-danger" (click)="reset()" pButton pRipple label="Reset" style="width: 200px;" ></button>
+
+        </div>
+          <!-- <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> -->
+
+      </div>
+
+   
+   
+     </div>
+  
+     </form>
+     </div>
+        
+
+    </section>
+    <div class="container">
+
+    </div>
+    <div class="container" id="tb">
+      
+<div class="container-fluid">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="text-center" style="margin: 10px;">
+            <h2>Manage Member Details</h2>
+          </div>
+          <div class="col-xs-6" style="position: relative;left:0px" >
+            
+            <input type="text" id="search-bar" #searchName formControlName="search" placeholder="search member here" >
+            <a href="#" class="search-icon">
+                <i class="pi pi-search" (click)="search(searchName)"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover" #dt>
+       
+        <thead>
+          <tr>
+          
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>City</th>
+            <!-- <th>Technical Skills</th>   -->
+            <th>Action</th>
+          </tr>
+        </thead >
+        <tbody>
+          <tr *ngFor="let member of newestItems" >
+          
+      
+            <td style="width: 250px;" >{{member.fullName}}</td>
+            <td style="width: 250px;" >{{member.gender}}</td>
+            <td style="width: 250px;" >{{member.email}}</td>
+            <td style="width: 250px;" >{{member.mobile}}</td>
+            <td style="width: 250px;" >{{member.city}}</td>
+            <!-- <td style="width: 250px;" >{{member.skills}}</td> -->
+       
+             <td style="width: 500px;">
+              
+         <button class="p-button-rounded p-button-info" style="margin: 3px;" pButton (click)="viewMember(member.id)">View</button>
+         <button class="p-button-rounded p-button-warning" pButton style="margin: 3px;" (click)="updateMember(member.id)">Edit</button>
+         <button class="p-button-rounded p-button-info" style="margin: 3px;" pButton (click)="generatePdf()">Download PDF</button>
+         <button class="p-button-rounded p-button-danger" style="margin: 3px;" (click)="deleteMember(member.id)" pButton pRipple  label="Delete"></button>
+          </td> 
+          
+          </tr>
+          
+        </tbody>
+      </table>
+      <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    </div>
+  </div>        
+  </div>
+
+    </div>

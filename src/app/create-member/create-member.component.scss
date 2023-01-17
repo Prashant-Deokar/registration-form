@@ -1,0 +1,89 @@
+.header {
+    text-align: center;
+    margin: 15px;
+}
+
+.ui-grid-row {
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.ui-dialog-buttonpane {
+    padding: 3px;
+    display: flex;
+}
+
+.footer-padding {
+    flex: 4;
+}
+
+.footer-button {
+    flex: 2;
+}
+label{
+    color: rgb(14, 2, 2);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+// p-calendar{
+
+//     background-color: rgb(11, 79, 138);
+// }
+// #icon{
+//     color: red;
+//     background-color: green;
+// }
+// section{
+//     position: absolute;
+//     left: 1px;
+//     width: 1000px !important ;
+// }
+#tb{
+    position: relative;
+    left: 400px;
+    width: 1100px !important;
+    box-shadow: 20px 1px 10px 2px rgb(133, 69, 69);
+}
+// .t{
+//    height: 100px;
+ 
+// }
+input#search-bar{
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 1rem;
+    border: 1px solid #D0CFCE;
+    outline: none;
+    &:focus{
+      border: 1px solid #008ABF;
+      transition: 0.35s ease;
+      color: #008ABF;
+      &::-webkit-input-placeholder{
+        transition: opacity 0.45s ease; 
+        opacity: 0;
+       }
+      &::-moz-placeholder {
+        transition: opacity 0.45s ease; 
+        opacity: 0;
+       }
+      &:-ms-placeholder {
+       transition: opacity 0.45s ease; 
+       opacity: 0;
+       }    
+     }
+   }
+  
+  .search-icon .pi-search{
+      position: relative;
+      float: right;
+      width: 75px !important;
+      top: -39px;
+      right: -38px;
+      font-size: 30px;
+  }
+  p-dropdown{
+    min-width: 80%;
+  }

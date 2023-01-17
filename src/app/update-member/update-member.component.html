@@ -1,0 +1,314 @@
+
+
+
+
+<h1>Registration Form</h1>
+
+<section class="container" style="background-color: rgb(144, 155, 143); height: 1450px; width: 1000px;">
+
+    <div class="container h-100">
+
+<form [formGroup]="userform" (ngSubmit)="onSubmit()" style="position: relative; top:50px" >
+<label style="position: relative;left:200px"><h2>Personal Information </h2></label>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+   
+      <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input type="text"  class="form-control" formControlName="fullName" placeholder="Enter first name">
+        <small id="emailHelp" class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+        *ngIf="!userform.controls['fullName'].valid && userform.controls['fullName'].touched">
+        <i class="fa fa-close"></i>
+        Name is required
+       </small>
+      </div>
+
+
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input type="email"  class="form-control" formControlName="email" placeholder="Enter Email">
+        <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+        *ngIf="!userform.controls['email'].valid && userform.controls['email'].touched">
+        <i class="fa fa-close"></i>
+         Email is required
+       </small>
+      </div>
+
+
+      <div class="form-group">
+        <label for="number"> Mobile Number*</label>
+        <input type="number"  class="form-control" formControlName="mobile" placeholder="Enter mobile number">
+        <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+        *ngIf="!userform.controls['mobile'].valid && userform.controls['mobile'].touched">
+        <i class="fa fa-close"></i>
+        mobile number is required
+       </small>
+      </div>
+
+      <div class="form-group">
+        <label for="number">Gender *</label>
+        <div class="custom-control custom-radio">
+            <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
+       <label class="custom-control-label" for="male">Male</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+            <label class="custom-control-label" for="female">Female</label>
+          </div>
+        <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+        *ngIf="!userform.controls['gender'].valid && userform.controls['gender'].touched">
+        <i class="fa fa-close"></i>
+      Gender is required
+       </small>
+      </div>
+
+
+      <div >
+        <label style="position: relative;left:400px"><h3>Address</h3></label>
+        <div class="form-group">
+            <label for="address">Address line 1 *</label>
+            <input type="text" class="form-control" formControlName="addressLine1" placeholder="Enter Address">
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['addressLine1'].valid && userform.controls['addressLine1'].touched">
+            <i class="fa fa-close"></i>
+               Address is required
+           </small>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address line 2</label>
+            <input type="text" class="form-control" formControlName="addressLine2" placeholder="Enter Address">
+          </div>
+
+
+          <div class="form-group" style="position: relative;left:30px;top: 40px;">
+          
+                <p-dropdown class="ui-grid-col-6"placeholder="select a City" [options]="cities" optionLabel="name" formControlName="city" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['city'].valid && userform.controls['city'].touched">
+            <i class="fa fa-close"></i>
+             City is required
+           </small>
+          </div>
+
+          <div class="form-group" style="position: relative; left: 200px;bottom: 3px;">
+      
+                <p-dropdown class="ui-grid-col-6" placeholder="select a State" [options]="State" optionLabel="name" formControlName="state" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['state'].valid && userform.controls['state'].touched">
+            <i class="fa fa-close"></i>
+             State is required
+           </small>
+          </div>
+
+          <div class="form-group" style="position: relative;bottom:45px; left:450px">
+       
+                <p-dropdown class="ui-grid-col-6" placeholder="select a Country" [options]="Country" optionLabel="name" formControlName="country" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['country'].valid && userform.controls['country'].touched">
+            <i class="fa fa-close"></i>
+            Country is required
+           </small>
+          </div>
+          <div class="form-group" style="position: relative;bottom:87px; left:650px">
+         
+           <p-calendar    [showIcon]="true" formControlName="dob" placeholder="select date of birth" inputId="icon" ></p-calendar>
+            <small class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['dob'].valid && userform.controls['dob'].touched">
+            <i class="fa fa-close"></i>
+            Date of birth is required
+           </small>
+          </div>
+
+          <div class="form-group" style="position: relative; top:0px">
+            <label for="address">Pin Code*</label>
+            <input type="number" class="form-control" formControlName="pinCode" placeholder="Enter Pin Code">
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['pinCode'].valid && userform.controls['pinCode'].touched">
+            <i class="fa fa-close"></i>
+            pin Code is required
+           </small>
+          </div>
+
+          <div  class="form-group" style="position: relative; top:0px">
+          <label for="address"  >select at least two skills*</label><br>
+          <div *ngFor="let category of Skills" class="p-field-checkbox" >
+          
+            <p-checkbox name="group2" value="category" [value]="category" formControlName="skills" ></p-checkbox>
+            <label [for]="category.key">{{category.name}}</label>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['skills'].valid && userform.controls['skills'].touched">
+            <i class="fa fa-close"></i>
+            skills is required
+           </small>
+          </div>
+        </div>
+
+        <br>
+        <div >
+          <label style="position: relative;left:100px"> Current Address  (same as permanent address)  :  <input type="checkbox" (click)="checkBox(this.userform)"></label>
+          <div class="form-group">
+              <label for="address">Address line 1 *</label>
+              <input type="text" class="form-control" formControlName="paddressLine1" placeholder="Enter Address">
+              <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+              *ngIf="!userform.controls['addressLine1'].valid && userform.controls['addressLine1'].touched">
+              <i class="fa fa-close"></i>
+                 Address is required
+             </small>
+            </div>
+        
+            <div class="form-group">
+              <label for="address">Address line 2</label>
+              <input type="text" class="form-control" formControlName="paddressLine1" placeholder="Enter Address">
+            </div>
+        
+        
+            <div class="form-group" style="position: relative;left:30px;top: 40px;">
+            
+                  <p-dropdown class="ui-grid-col-6"placeholder="select a City" [options]="cities" optionLabel="name" formControlName="pcity" optionValue="name" [showClear]="true"></p-dropdown><br>
+              <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+              *ngIf="!userform.controls['city'].valid && userform.controls['city'].touched">
+              <i class="fa fa-close"></i>
+               City is required
+             </small>
+            </div>
+        
+            <div class="form-group" style="position: relative; left: 250px;bottom: 3px;">
+        
+                  <p-dropdown class="ui-grid-col-6" placeholder="select a State" [options]="State" optionLabel="name" formControlName="pstate" optionValue="name" [showClear]="true"></p-dropdown><br>
+              <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+              *ngIf="!userform.controls['state'].valid && userform.controls['state'].touched">
+              <i class="fa fa-close"></i>
+               State is required
+             </small>
+            </div>
+        
+            <div class="form-group" style="position: relative;bottom:45px; left:500px">
+         
+                  <p-dropdown class="ui-grid-col-6" placeholder="select a Country" [options]="Country" optionLabel="name" formControlName="pcountry" optionValue="name" [showClear]="true"></p-dropdown><br>
+              <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+              *ngIf="!userform.controls['country'].valid && userform.controls['country'].touched">
+              <i class="fa fa-close"></i>
+              Country is required
+             </small>
+            </div>
+        
+            <div class="form-group" style="position: relative; top:0px;margin: 20px;">
+              <label for="address">Pin Code*</label>
+              <input type="number" class="form-control" formControlName="ppinCode" placeholder="Enter Pin Code">
+              <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+              *ngIf="!userform.controls['pinCode'].valid && userform.controls['pinCode'].touched">
+              <i class="fa fa-close"></i>
+              pin Code is required
+             </small>
+            </div>
+            </div>
+              
+        
+
+      
+
+          <!-- <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> -->
+
+      </div>
+      <div >
+        <!-- <label>    
+           <h3>same as permanent address
+            
+            <p-checkbox  (click)="event($event)">
+
+           </p-checkbox></h3></label>
+        <div class="form-group">
+            <label for="address">Address line 1 *</label>
+            <input type="text" class="form-control" formControlName="addressLine1" placeholder="Enter Address">
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['addressLine1'].valid && userform.controls['addressLine1'].touched">
+            <i class="fa fa-close"></i>
+               Address is required
+           </small>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address line 2</label>
+            <input type="text" class="form-control" formControlName="addressLine2" placeholder="Enter Address">
+          </div>
+
+
+          <div class="form-group" style="position: relative;left:30px;top: 40px;">
+            <label for="city">Select City* : </label>
+                <p-dropdown class="ui-grid-col-6" [options]="cities" optionLabel="name" formControlName="city" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['city'].valid && userform.controls['city'].touched">
+            <i class="fa fa-close"></i>
+             City is required
+           </small>
+          </div>
+                
+          <div class="form-group" style="position: relative; left: 400px;top:10px">
+            <label for="city">Select State* : </label>
+                <p-dropdown class="ui-grid-col-6" [options]="State" optionLabel="name" formControlName="state" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['state'].valid && userform.controls['state'].touched">
+            <i class="fa fa-close"></i>
+             State is required
+           </small>
+          </div>
+
+          <div class="form-group" style="position: relative;top:70px; left:30px">
+            <label for="city">Select Country* : </label>
+                <p-dropdown class="ui-grid-col-6" [options]="Country" optionLabel="name" formControlName="country" optionValue="name" [showClear]="true"></p-dropdown><br>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['country'].valid && userform.controls['country'].touched">
+            <i class="fa fa-close"></i>
+            Country is required
+           </small>
+          </div>
+
+          <div class="form-group" style="position: relative; top:200px">
+            <label for="address">Pin Code*</label>
+            <input type="number" class="form-control" formControlName="pinCode" placeholder="Enter Pin Code">
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['pinCode'].valid && userform.controls['pinCode'].touched">
+            <i class="fa fa-close"></i>
+            pin Code is required
+           </small>
+          </div>
+
+          <div  class="form-group" style="position: relative; top:250px">
+          <label for="address"  >select at least two skills*</label><br>
+          <div *ngFor="let category of Skills" class="p-field-checkbox" >
+          
+            <p-checkbox name="group2" value="category" [value]="category" formControlName="skills" ></p-checkbox>
+            <label [for]="category.key">{{category.name}}</label>
+            <small  class="form-text text-muted" class="ui-message ui-messages-error ui-corner-all" style="color: red;" 
+            *ngIf="!userform.controls['skills'].valid && userform.controls['skills'].touched">
+            <i class="fa fa-close"></i>
+            skills is required
+           </small>
+          </div>
+        </div> -->
+
+
+        <div  class="row justify-content-center">
+          <button type="submit" pButton pRipple class="p-button-success" label="Update" value="Update" style="width: 200px;"></button>
+          <button type="reset" class="p-button-warning" pButton pRipple label="Reset" style="width: 200px;" ></button>
+
+        </div>
+          <!-- <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> -->
+
+      </div>
+
+   
+   
+     </div>
+  
+     </form>
+     </div>
+        
+   
+    </section>

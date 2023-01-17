@@ -1,0 +1,58 @@
+
+<div class="container-fluid"><p-toast></p-toast>
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-xs-6">
+              <h2>Manage <b>Member Details</b></h2>
+            </div>
+            <div class="col-xs-6" style="position: relative;left:650px">
+              
+                      
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+            
+              <th>Full Name</th>
+              <th>Gender</th>
+              <th>Email</th>
+              <th>Mobile No</th>
+              <th>City</th>
+              <th>Technical Skills</th>  
+              <th>Action</th>
+            </tr>
+          </thead >
+          <tbody>
+            <tr *ngFor="let member of newestItems" >
+            
+        
+              <td style="width: 250px;" >{{member.fullName}}</td>
+              <td style="width: 250px;" >{{member.gender}}</td>
+              <td style="width: 250px;" >{{member.email}}</td>
+              <td style="width: 250px;" >{{member.mobile}}</td>
+              <td style="width: 250px;" >{{member.city}}</td>
+              <td style="width: 250px;" >{{member.skills}}</td>
+         
+               <td style="width: 500px;">
+            <button class="p-button-rounded p-button-warning" pButton style="margin: 3px;" (click)="updateMember(member.id)">Edit</button>
+        
+   
+       
+           <button class="p-button-rounded p-button-info" style="margin: 3px;" pButton (click)="viewMember(member.id)">View</button>
+      
+           <button class="p-button-rounded p-button-danger" style="margin: 3px;" (click)="deleteMember(member.id)" pButton pRipple  label="Delete"></button>
+            </td> 
+            
+            </tr>
+            
+          </tbody>
+        </table>
+        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+      </div>
+    </div>        
+    </div>
+  
