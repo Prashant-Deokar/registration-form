@@ -5,11 +5,12 @@
         <div class="table-title">
           <div class="row">
             <div class="col-xs-6">
-              <h2>Manage <b>Member Details</b></h2>
+              <h2>Manage <b> Member Details</b></h2>
             </div>
             <div class="col-xs-6" style="position: relative;left:650px">
               
                       
+
             </div>
           </div>
         </div>
@@ -45,13 +46,16 @@
            <button class="p-button-rounded p-button-info" style="margin: 3px;" pButton (click)="viewMember(member.id)">View</button>
       
            <button class="p-button-rounded p-button-danger" style="margin: 3px;" (click)="deleteMember(member.id)" pButton pRipple  label="Delete"></button>
+
             </td> 
             
             </tr>
             
           </tbody>
         </table>
+
         <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+        
       </div>
     </div>        
     </div>
